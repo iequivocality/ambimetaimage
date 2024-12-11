@@ -68,7 +68,7 @@ function App() {
               id="preview"
               className="w-[1200px] h-[627px] p-16 pt-24 flex flex-col gap-y-16"
             >
-              <div className="text-8xl font-bold max-w-[700px]">{title}</div>
+              <div className="text-8xl font-bold max-w-[700px] text-yellow">{title}</div>
               <div className="text-muted-foreground font-medium text-2xl max-w-[600px]">
                 {subtitle}
               </div>
