@@ -30,7 +30,11 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    --text-yellow: #ffd270;
+    --bg-gradient-top-color: #082a49;
+    --bg-gradient-bottom-color: #0e3f6c;
   }
+
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
@@ -63,7 +67,27 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+}
+
+#preview {
+  background-image: linear-gradient(
+    -5deg,
+    hsl(209deg 77% 24%) 0%,
+    hsl(209deg 78% 23%) 15%,
+    hsl(209deg 78% 21%) 20%,
+    hsl(209deg 79% 20%) 24%,
+    hsl(209deg 79% 18%) 27%,
+    hsl(209deg 80% 17%) 31%,
+    hsl(209deg 80% 16%) 35%,
+    hsl(215deg 60% 15%) 41%,
+    hsl(221deg 48% 14%) 47%,
+    hsl(229deg 39% 12%) 56%,
+    hsl(241deg 32% 10%) 66%,
+    hsl(257deg 47% 7%) 80%,
+    hsl(263deg 100% 3%) 100%
+  );
 }
