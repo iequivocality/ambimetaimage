@@ -2,14 +2,17 @@ import { toJpeg } from "html-to-image";
 import { StarryBackground } from "./components/StarryBackground";
 import { Button } from "./components/ui/button";
 import { ScrollArea } from "./components/ui/scroll-area";
-import { DownloadIcon } from "lucide-react";
+import { DownloadIcon, TrashIcon } from "lucide-react";
 import { Label } from "./components/ui/label";
 import { Input } from "./components/ui/input";
-import { useState } from "react";
+import { useLocalStorage } from "usehooks-ts";
 
 function App() {
-  const [title, setTitle] = useState("");
-  const [subtitle, setSubtitle] = useState("");
+  const [title, setTitle, removeTitle] = useLocalStorage("title", "");
+  const [subtitle, setSubtitle, removeSubtitle] = useLocalStorage(
+    "subtitle",
+    "",
+  );
 
   const download = () => {
     const previewNode = document.getElementById("preview")!;
@@ -51,7 +54,18 @@ function App() {
               onChange={(e) => setSubtitle(e.target.value)}
             />
           </div>
-          <div className="flex justify-end items-center w-full">
+          <div className="flex justify-end items-center w-full gap-x-2">
+            <Button
+              variant="default"
+              className="text-yellow bg-blue border-yellow border"
+              onClick={() => {
+                removeTitle();
+                removeSubtitle();
+              }}
+            >
+              <TrashIcon />
+              Delete
+            </Button>
             <Button
               variant="default"
               className="text-yellow bg-blue border-yellow border"
@@ -68,11 +82,16 @@ function App() {
               id="preview"
               className="w-[1200px] h-[627px] p-16 pt-24 flex flex-col gap-y-16"
             >
-              <div className="text-8xl font-bold max-w-[700px] text-yellow">{title}</div>
+              <div className="text-8xl font-bold max-w-[700px] text-yellow">
+                {title}
+              </div>
               <div className="text-muted-foreground font-medium text-2xl max-w-[600px]">
                 {subtitle}
               </div>
-              <img className="absolute -right-32 -top-8 w-[60%] -rotate-12" src="/pfp.png" />
+              <img
+                className="absolute -right-32 -top-8 w-[60%] -rotate-12"
+                src="/pfp.png"
+              />
               <StarryBackground />
             </div>
           </ScrollArea>
