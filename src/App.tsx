@@ -85,7 +85,7 @@ function App() {
               <div className="text-8xl font-bold max-w-[700px] text-yellow">
                 {title}
               </div>
-              <div className="text-muted-foreground font-medium text-2xl max-w-[600px]">
+              <div className="text-foreground font-medium text-4xl max-w-[600px]">
                 {subtitle}
               </div>
               <img
