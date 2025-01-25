@@ -1,6 +1,6 @@
 export function StarryBackground() {
   return (
-    <div className="stars-wrapper pointer-events-none absolute left-0 top-0 overflow-hidden w-[1200px] h-[627px]">
+    <div className="stars-wrapper pointer-events-none absolute left-0 top-0 overflow-hidden w-[1200px] h-[627px] z-0">
       <svg className="absolute bottom-0 left-0 right-0 top-0 h-full w-full">
         <defs>
           <radialGradient id="cometGradient" cx="0" cy=".5" r="0.5">

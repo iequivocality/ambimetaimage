@@ -27,34 +27,38 @@ function App() {
 
   return (
     <main className="flex p-16 items-center font-sans min-w-screen dark min-h-screen bg-gradient-to-b from-[--bg-gradient-top-color] to-[--bg-gradient-bottom-color]">
-      <section className="grid grid-cols-1 lg:grid-cols-5 w-full">
-        <div className="flex flex-col gap-y-8 col-span-1">
+      <section className="grid w-full gap-y-8">
+        <div className="flex flex-col gap-8 col-span-1 w-full">
           <h1 className="text-2xl font-bold">Meta Image Generator</h1>
-          <div className="grid w-full max-w-sm items-center gap-1.5">
-            <Label htmlFor="title" className="font-semibold">
-              Title
-            </Label>
-            <Input
-              className="w-full"
-              type="text"
-              id="title"
-              placeholder="Title"
-              onChange={(e) => setTitle(e.target.value)}
-            />
-          </div>
-          <div className="grid w-full max-w-sm items-center gap-1.5">
-            <Label htmlFor="subtitle" className="font-semibold">
-              Subtitle
-            </Label>
-            <Input
-              className="w-full"
-              type="text"
-              id="subtitle"
-              placeholder="Subtitle"
-              onChange={(e) => setSubtitle(e.target.value)}
-            />
-          </div>
-          <div className="flex justify-end items-center w-full gap-x-2">
+          <div className="flex gap-x-8 w-full">
+            <div className="grid w-full max-w-sm items-center gap-1.5">
+              <Label htmlFor="title" className="font-semibold">
+                Title
+              </Label>
+              <Input
+                className="w-full"
+                type="text"
+                id="title"
+                placeholder="Title"
+                onChange={(e) => setTitle(e.target.value)}
+                value={title}
+              />
+            </div>
+            <div className="grid w-full max-w-sm items-center gap-1.5">
+              <Label htmlFor="subtitle" className="font-semibold">
+                Subtitle
+              </Label>
+              <Input
+                className="w-full"
+                type="text"
+                id="subtitle"
+                placeholder="Subtitle"
+                onChange={(e) => setSubtitle(e.target.value)}
+                value={subtitle}
+              />
+            </div>
+          </div>  
+          <div className="flex items-center w-full gap-x-2">
             <Button
               variant="default"
               className="text-yellow bg-blue border-yellow border"
@@ -76,20 +80,20 @@ function App() {
             </Button>
           </div>
         </div>
-        <div className="flex flex-col gap-y-4 col-span-4 items-center">
-          <ScrollArea className="w-full max-w-[1200px] h-[627px] bg-accent rounded-md">
+        <div className="flex flex-col gap-y-4 lg:col-span-4 justify-center">
+          <ScrollArea className="w-full max-w-[1200px] h-[627px] bg-accent">
             <div
               id="preview"
-              className="w-[1200px] h-[627px] p-16 pt-24 flex flex-col gap-y-16"
+              className="w-[1200px] h-[627px] p-16 pt-24 flex flex-col gap-y-16 border-b-8 border-b-[#daebfc]"
             >
-              <div className="text-8xl font-bold max-w-[700px] text-yellow">
+              <div className="text-8xl font-bold max-w-[700px] text-yellow z-10">
                 {title}
               </div>
-              <div className="text-foreground font-medium text-4xl max-w-[600px]">
+              <div className="text-foreground font-medium text-4xl max-w-[600px] z-10">
                 {subtitle}
               </div>
               <img
-                className="absolute -right-32 -top-8 w-[60%] -rotate-12"
+                className="absolute -right-32 -top-8 w-[58%] -rotate-12 z-10"
                 src="/pfp.png"
               />
               <StarryBackground />
