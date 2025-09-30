@@ -1,11 +1,11 @@
 import { toJpeg } from "html-to-image";
-import { StarryBackground } from "./components/StarryBackground";
 import { Button } from "./components/ui/button";
 import { ScrollArea } from "./components/ui/scroll-area";
 import { DownloadIcon, TrashIcon } from "lucide-react";
 import { Label } from "./components/ui/label";
 import { Input } from "./components/ui/input";
 import { useLocalStorage } from "usehooks-ts";
+import { useNoise } from "./lib/hooks";
 
 function App() {
   const [title, setTitle, removeTitle] = useLocalStorage("title", "");
@@ -25,8 +25,16 @@ function App() {
     });
   };
 
+  const canvasRef = useNoise({
+    patternSize: 250,
+    patternScaleX: 1,
+    patternScaleY: 1,
+    patternRefreshInterval: 0,
+    patternAlpha: 15,
+  });
+
   return (
-    <main className="flex p-16 items-center font-sans min-w-screen dark min-h-screen bg-gradient-to-b from-[--bg-gradient-top-color] to-[--bg-gradient-bottom-color]">
+    <main className="flex p-16 items-center font-sans min-w-screen dark min-h-screen">
       <section className="grid w-full gap-y-8">
         <div className="flex flex-col gap-8 col-span-1 w-full">
           <h1 className="text-2xl font-bold">Meta Image Generator</h1>
@@ -84,19 +92,24 @@ function App() {
           <ScrollArea className="w-full max-w-[1200px] h-[627px] bg-accent">
             <div
               id="preview"
-              className="w-[1200px] h-[627px] p-16 pt-24 flex flex-col gap-y-16 border-b-8 border-b-[#daebfc]"
+              className="w-[1200px] h-[627px] p-16 pt-24 flex flex-col items-center border-b-8 border-b-[#daebfc] bg-gradient-to-b from-[--bg-gradient-top-color] to-[--bg-gradient-bottom-color]"
             >
-              <div className="text-8xl font-bold max-w-[700px] text-yellow z-10">
+              <canvas
+                className="absolute left-0 top-0 w-[1200px] h-[627px] z-0"
+                ref={canvasRef}
+              />
+              <div className="size-28 relative overflow-hidden z-10 rounded-full border-4 border-white box-border bg-blue">
+                <img
+                  className="absolute -top-[40px] -left-[225px] w-[240px] min-w-[500px] h-[500px]"
+                  src="/pfp.png"
+                />
+              </div>
+              <div className="text-7xl font-bold max-w-[700px] text-yellow z-10 mt-4">
                 {title}
               </div>
-              <div className="text-foreground font-medium text-4xl max-w-[600px] z-10">
+              <div className="text-foreground font-medium text-4xl max-w-[600px] z-10 text-center mt-10">
                 {subtitle}
               </div>
-              <img
-                className="absolute -right-32 -top-8 w-[58%] -rotate-12 z-10"
-                src="/pfp.png"
-              />
-              <StarryBackground />
             </div>
           </ScrollArea>
         </div>
