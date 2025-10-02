@@ -13,13 +13,17 @@ function App() {
     "subtitle",
     "",
   );
+  const [filename, setFilename, removeFilename] = useLocalStorage(
+    "filename",
+    "",
+  );
 
   const download = () => {
     const previewNode = document.getElementById("preview")!;
 
     void toJpeg(previewNode).then((dataUrl) => {
       const link = document.createElement("a");
-      link.download = `${title ? title.toLowerCase() : "meta-image"}.jpeg`;
+      link.download = `${filename ? filename.toLowerCase() : "meta-image"}.jpeg`;
       link.href = dataUrl;
       link.click();
     });
@@ -65,7 +69,20 @@ function App() {
                 value={subtitle}
               />
             </div>
-          </div>  
+          </div>
+          <div className="flex flex-col w-full gap-1.5">
+            <Label htmlFor="subtitle" className="font-semibold">
+              Filename
+            </Label>
+            <Input
+              className="w-full"
+              type="text"
+              id="filename"
+              placeholder="Filename"
+              onChange={(e) => setFilename(e.target.value)}
+              value={filename}
+            />
+          </div>
           <div className="flex items-center w-full gap-x-2">
             <Button
               variant="default"
@@ -73,6 +90,7 @@ function App() {
               onClick={() => {
                 removeTitle();
                 removeSubtitle();
+                removeFilename();
               }}
             >
               <TrashIcon />
@@ -104,7 +122,7 @@ function App() {
                   src="/pfp.png"
                 />
               </div>
-              <div className="text-7xl font-bold max-w-[700px] text-yellow z-10 mt-4">
+              <div className="text-7xl font-bold max-w-[700px] text-yellow text-center z-10 mt-4">
                 {title}
               </div>
               <div className="text-foreground font-medium text-4xl max-w-[600px] z-10 text-center mt-10">
