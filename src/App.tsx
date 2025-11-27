@@ -6,6 +6,8 @@ import { Label } from "./components/ui/label";
 import { Input } from "./components/ui/input";
 import { useLocalStorage } from "usehooks-ts";
 import { useNoise } from "./lib/hooks";
+import { Checkbox } from "./components/ui/checkbox";
+import { cn } from "./lib/utils";
 
 function App() {
   const [title, setTitle, removeTitle] = useLocalStorage("title", "");
@@ -17,6 +19,12 @@ function App() {
     "filename",
     "",
   );
+  const [titleOnly, setTitleOnly] = useLocalStorage("titleOnly", false, {
+    deserializer: (s) => s === "true"
+  });
+  const [smallText, setSmallText] = useLocalStorage("smallText", false, {
+    deserializer: (s) => s === "true"
+  });
 
   const download = () => {
     const previewNode = document.getElementById("preview")!;
@@ -83,6 +91,30 @@ function App() {
               value={filename}
             />
           </div>
+          <div className="flex w-full gap-1.5">
+            <Label htmlFor="titleOnly" className="font-semibold">
+              Title Only
+            </Label>
+            <Checkbox
+              id="titleOnly"
+              onCheckedChange={(checked) =>
+                setTitleOnly(checked === "indeterminate" ? false : checked)
+              }
+              value={titleOnly ? "checked" : ""}
+            />
+          </div>
+          <div className="flex w-full gap-1.5">
+            <Label htmlFor="smallText" className="font-semibold">
+              SmallText
+            </Label>
+            <Checkbox
+              id="smallText"
+              onCheckedChange={(checked) =>
+                setSmallText(checked === "indeterminate" ? false : checked)
+              }
+              value={smallText ? "checked" : ""}
+            />
+          </div>
           <div className="flex items-center w-full gap-x-2">
             <Button
               variant="default"
@@ -107,25 +139,57 @@ function App() {
           </div>
         </div>
         <div className="flex flex-col gap-y-4 lg:col-span-4 justify-center">
-          <ScrollArea className="w-full max-w-[1200px] h-[627px] bg-accent">
+          <ScrollArea
+            className={cn("w-full max-w-[1200px] h-[627px] bg-accent", {
+              "h-15": smallText,
+            })}
+          >
             <div
               id="preview"
-              className="w-[1200px] h-[627px] p-16 pt-24 flex flex-col items-center border-b-8 border-b-[#daebfc] bg-gradient-to-b from-[--bg-gradient-top-color] to-[--bg-gradient-bottom-color]"
+              className={cn(
+                "overflow-hidden w-[1200px] h-[627px] p-16 pt-24 flex flex-col items-center border-b-8 border-b-[#daebfc] bg-gradient-to-b from-[--bg-gradient-top-color] to-[--bg-gradient-bottom-color]",
+                {
+                  "border-0 h-20 p-0 justify-center": smallText,
+                  "justify-center": titleOnly,
+                },
+              )}
             >
               <canvas
-                className="absolute left-0 top-0 w-[1200px] h-[627px] z-0"
+                className={cn(
+                  "absolute left-0 top-0 w-[1200px] h-[627px] z-0",
+                  { "h-15 hidden": smallText },
+                )}
                 ref={canvasRef}
               />
-              <div className="size-28 relative overflow-hidden z-10 rounded-full border-4 border-white box-border bg-blue">
+              <div
+                className={cn(
+                  "size-28 relative overflow-hidden z-10 rounded-full border-4 border-white box-border bg-blue",
+                )}
+                style={{
+                  display: titleOnly ? "none" : "block",
+                }}
+              >
                 <img
                   className="absolute -top-[40px] -left-[225px] w-[240px] min-w-[500px] h-[500px]"
                   src="/pfp.png"
                 />
               </div>
-              <div className="text-7xl font-bold max-w-[700px] text-yellow text-center z-10 mt-4">
+              <div
+                className={cn(
+                  "text-7xl font-bold max-w-[700px] text-yellow text-center z-10 mt-4",
+                  {
+                    "text-sm font-extralight mt-0 font-mono": smallText,
+                  },
+                )}
+              >
                 {title}
               </div>
-              <div className="text-foreground font-medium text-4xl max-w-[600px] z-10 text-center mt-10">
+              <div
+                className="text-foreground font-medium text-4xl max-w-[600px] z-10 text-center mt-10"
+                style={{
+                  display: titleOnly ? "none" : "block",
+                }}
+              >
                 {subtitle}
               </div>
             </div>

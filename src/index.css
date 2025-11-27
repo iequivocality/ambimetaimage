@@ -33,6 +33,7 @@
     --text-yellow: #ffd270;
     --bg-gradient-top-color: #082a49;
     --bg-gradient-bottom-color: #0e3f6c;
+    --font-mono: GeistMono;
   }
 
   .dark {
@@ -88,6 +89,24 @@
     font-family: Poppins;
     font-weight: 700;
     src: url(/fonts/Poppins-Bold.ttf);
+  }
+
+  @font-face {
+    font-family: GeistMono;
+    font-weight: 500;
+    src: url(/fonts/GeistMono-Variable.ttf);
+  }
+
+  @font-face {
+    font-family: GeistMono;
+    font-weight: 600;
+    src: url(/fonts/GeistMono-Variable.ttf);
+  }
+
+  @font-face {
+    font-family: GeistMono;
+    font-weight: 700;
+    src: url(/fonts/GeistMono-Variable.ttf);
   }
 }
 
