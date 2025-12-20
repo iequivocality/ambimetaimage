@@ -4,7 +4,7 @@ import { DownloadIcon, TrashIcon } from "lucide-react";
 import { Label } from "./components/ui/label";
 import { Input } from "./components/ui/input";
 import { useLocalStorage } from "usehooks-ts";
-import { Preview, TemplateKey } from "./components/preview";
+import { Preview } from "./components/preview";
 import {
   Select,
   SelectContent,
