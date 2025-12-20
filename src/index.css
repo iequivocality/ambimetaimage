@@ -110,7 +110,7 @@
   }
 }
 
-#preview {
+.default-template {
   background-image: linear-gradient(
     -5deg,
     hsl(209deg 77% 24%) 0%,
@@ -126,5 +126,16 @@
     hsl(241deg 32% 10%) 66%,
     hsl(257deg 47% 7%) 80%,
     hsl(263deg 100% 3%) 100%
+  );
+}
+
+.stripesA-template {
+  background: repeating-linear-gradient(
+    135deg,
+    #2f4476 0 15px,
+    #D98EAA 15px 40px,
+    #586ca5 40px 60px,
+    #F7F7F7 60px 80px,
+    #94284F 80px 90px
   );
 }

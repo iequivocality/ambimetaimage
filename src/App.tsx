@@ -1,14 +1,17 @@
 import { toJpeg } from "html-to-image";
 import { Button } from "./components/ui/button";
-import { ScrollArea } from "./components/ui/scroll-area";
 import { DownloadIcon, TrashIcon } from "lucide-react";
 import { Label } from "./components/ui/label";
 import { Input } from "./components/ui/input";
 import { useLocalStorage } from "usehooks-ts";
-import { useNoise } from "./lib/hooks";
-import { Checkbox } from "./components/ui/checkbox";
-import { cn } from "./lib/utils";
-import { Preview } from "./components/preview";
+import { Preview, TemplateKey } from "./components/preview";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./components/ui/select";
 
 function App() {
   const [title, setTitle, removeTitle] = useLocalStorage("title", "");
@@ -20,12 +23,11 @@ function App() {
     "filename",
     "",
   );
-  const [titleOnly, setTitleOnly] = useLocalStorage("titleOnly", false, {
-    deserializer: (s) => s === "true",
-  });
-  const [smallText, setSmallText] = useLocalStorage("smallText", false, {
-    deserializer: (s) => s === "true",
-  });
+
+  const [template, setTemplate] = useLocalStorage<string>(
+    "template",
+    "StripesA",
+  );
 
   const download = () => {
     const previewNode = document.getElementById("preview")!;
@@ -86,29 +88,20 @@ function App() {
                   value={filename}
                 />
               </div>
-              <div className="flex w-full gap-1.5">
-                <Label htmlFor="titleOnly" className="font-semibold">
-                  Title Only
+              <div className="flex items-center w-full gap-4">
+                <Label htmlFor="subtitle" className="font-semibold">
+                  Template
                 </Label>
-                <Checkbox
-                  id="titleOnly"
-                  onCheckedChange={(checked) =>
-                    setTitleOnly(checked === "indeterminate" ? false : checked)
-                  }
-                  value={titleOnly ? "checked" : ""}
-                />
-              </div>
-              <div className="flex w-full gap-1.5">
-                <Label htmlFor="smallText" className="font-semibold">
-                  SmallText
-                </Label>
-                <Checkbox
-                  id="smallText"
-                  onCheckedChange={(checked) =>
-                    setSmallText(checked === "indeterminate" ? false : checked)
-                  }
-                  value={smallText ? "checked" : ""}
-                />
+                <Select value={template} onValueChange={(v) => setTemplate(v)}>
+                  <SelectTrigger className="w-[180px]">
+                    <SelectValue placeholder="Select a template" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="Default">Default</SelectItem>
+                    <SelectItem value="TextOnly">Text Only</SelectItem>
+                    <SelectItem value="StripesA">Stripes A</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
               <div className="flex items-center w-full gap-x-2">
                 <Button
@@ -136,7 +129,7 @@ function App() {
           </div>
         </div>
         <div className="flex flex-col gap-y-4 lg:col-span-4 justify-center">
-          <Preview title={title} subtitle={subtitle} smallText={smallText} titleOnly={titleOnly} />
+          <Preview title={title} subtitle={subtitle} template={template} />
         </div>
       </section>
     </main>
