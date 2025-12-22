@@ -26,6 +26,7 @@ const TEMPLATES: MetaTemplate = {
         <PreviewAvatar />
         <PreviewTitle title={title} />
         <PreviewSubtitle subtitle={subtitle} />
+        <PreviewAuthor />
       </PreviewContainer>
     );
   },
@@ -50,6 +51,7 @@ const TEMPLATES: MetaTemplate = {
           className="bg-white w-full h-84 rounded-lg flex justify-center items-center p-8 text-gray-800 uppercase mt-0"
         />
         <PreviewAvatar className="absolute top-20" />
+        <PreviewAuthor className="absolute bottom-12 right-1/2 translate-x-1/2 font-sans px-4 py-2 bg-white text-gray-800 rounded-lg text-xl font-bold"/>
       </PreviewContainer>
     );
   },
@@ -90,6 +92,14 @@ export function PreviewContainer({
   );
 }
 
+export function PreviewAuthor({ className }: { className?: string }) {
+  return (
+    <div className={cn("absolute bottom-0 right-0 p-2 py-4 font-mono text-xl text-yellow", className)}>
+      by ambi.moe
+    </div>
+  );
+}
+
 export function PreviewTitle({
   className,
   title,
@@ -114,8 +124,12 @@ export function PreviewSubtitle({
   subtitle,
 }: {
   className?: string;
-  subtitle: string;
+  subtitle?: string;
 }) {
+  if (!subtitle) {
+    return null;
+  }
+
   return (
     <div
       className={cn(
