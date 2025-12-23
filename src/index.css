@@ -139,3 +139,37 @@
     #94284F 80px 90px
   );
 }
+
+.stripesB-template {
+  --bg-dark: #4AA879;
+  --bg-light: #E3DED7;
+  --size: 30px;
+  background-image: 
+    linear-gradient(135deg, var(--bg-light) 25%, transparent 25%),
+    linear-gradient(225deg, var(--bg-light) 25%, transparent 25%),
+    linear-gradient(45deg, var(--bg-light) 25%, transparent 25%),
+    linear-gradient(315deg, var(--bg-light) 25%, var(--bg-dark) 25%);
+  background-position: var(--size) 0, var(--size) 0, 0 0, 0 0;
+  background-size: calc(var(--size) * 2) calc(var(--size) * 2);
+  background-repeat: repeat;
+}
+
+.pink-blue-template {
+  background-image: linear-gradient(
+    0deg,
+    hsl(349deg 80% 76%) 0%,
+    hsl(347deg 67% 75%) 3%,
+    hsl(344deg 56% 73%) 6%,
+    hsl(340deg 46% 72%) 9%,
+    hsl(335deg 36% 70%) 12%,
+    hsl(327deg 28% 68%) 15%,
+    hsl(315deg 20% 66%) 19%,
+    hsl(292deg 16% 65%) 24%,
+    hsl(267deg 17% 66%) 29%,
+    hsl(243deg 18% 66%) 36%,
+    hsl(226deg 24% 65%) 44%,
+    hsl(216deg 31% 62%) 56%,
+    hsl(210deg 37% 60%) 72%,
+    hsl(206deg 43% 57%) 100%
+  );
+}

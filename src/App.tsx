@@ -100,6 +100,8 @@ function App() {
                     <SelectItem value="Default">Default</SelectItem>
                     <SelectItem value="TextOnly">Text Only</SelectItem>
                     <SelectItem value="StripesA">Stripes A</SelectItem>
+                    <SelectItem value="StripesB">Stripes B</SelectItem>
+                    <SelectItem value="PinkBlue">Pink Blue</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
