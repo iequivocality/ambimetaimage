@@ -133,23 +133,27 @@
   background: repeating-linear-gradient(
     135deg,
     #2f4476 0 15px,
-    #D98EAA 15px 40px,
+    #d98eaa 15px 40px,
     #586ca5 40px 60px,
-    #F7F7F7 60px 80px,
-    #94284F 80px 90px
+    #f7f7f7 60px 80px,
+    #94284f 80px 90px
   );
 }
 
 .stripesB-template {
-  --bg-dark: #4AA879;
-  --bg-light: #E3DED7;
+  --bg-dark: #4aa879;
+  --bg-light: #e3ded7;
   --size: 30px;
-  background-image: 
+  background-image:
     linear-gradient(135deg, var(--bg-light) 25%, transparent 25%),
     linear-gradient(225deg, var(--bg-light) 25%, transparent 25%),
     linear-gradient(45deg, var(--bg-light) 25%, transparent 25%),
     linear-gradient(315deg, var(--bg-light) 25%, var(--bg-dark) 25%);
-  background-position: var(--size) 0, var(--size) 0, 0 0, 0 0;
+  background-position:
+    var(--size) 0,
+    var(--size) 0,
+    0 0,
+    0 0;
   background-size: calc(var(--size) * 2) calc(var(--size) * 2);
   background-repeat: repeat;
 }
