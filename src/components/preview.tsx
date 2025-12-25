@@ -1,22 +1,14 @@
-import { FunctionComponent } from "react";
 import { Default, PinkBlue, StripesA, StripesB, TextOnly } from "./images";
 
-export type TemplateKey =
-  | "Default"
-  | "TextOnly"
-  | "StripesA"
-  | "StripesB"
-  | "PinkBlue";
-
-type MetaTemplate = Record<TemplateKey, FunctionComponent<PreviewProps>>;
-
-const TEMPLATES: MetaTemplate = {
+export const TEMPLATES = {
   Default: Default,
   TextOnly: TextOnly,
   StripesA: StripesA,
   StripesB: StripesB,
   PinkBlue: PinkBlue
 };
+
+type TemplateKey = keyof typeof TEMPLATES;
 
 export type PreviewProps = {
   title: string;

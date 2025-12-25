@@ -4,7 +4,7 @@ import { DownloadIcon, TrashIcon } from "lucide-react";
 import { Label } from "./components/ui/label";
 import { Input } from "./components/ui/input";
 import { useLocalStorage } from "usehooks-ts";
-import { Preview } from "./components/preview";
+import { Preview, TEMPLATES } from "./components/preview";
 import {
   Select,
   SelectContent,
@@ -97,11 +97,9 @@ function App() {
                     <SelectValue placeholder="Select a template" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="Default">Default</SelectItem>
-                    <SelectItem value="TextOnly">Text Only</SelectItem>
-                    <SelectItem value="StripesA">Stripes A</SelectItem>
-                    <SelectItem value="StripesB">Stripes B</SelectItem>
-                    <SelectItem value="PinkBlue">Pink Blue</SelectItem>
+                    {
+                      Object.keys(TEMPLATES).map((template) => <SelectItem value={template}>{template}</SelectItem>)
+                    }
                   </SelectContent>
                 </Select>
               </div>
