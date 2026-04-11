@@ -114,3 +114,17 @@ export const PinkBlue = ({ title }: PreviewProps) => {
     </PreviewContainer>
   );
 };
+
+export const Checkerboard = ({ title, subtitle }: PreviewProps) => {
+  return (
+    <PreviewContainer className="checkerboard-template flex justify-center">
+      
+      <PreviewTitle
+        title={title}
+        className="bg-white w-full h-84 rounded-lg flex justify-center items-center p-8 text-gray-800 mt-0"
+      />
+      <img className="absolute w-32 h-32 object-cover top-[25%] -translate-y-1/2 rounded-full z-40 border-white border-4" src="/templates/raora.png"/>
+      <PreviewSubtitle className="bg-[#675666] leading-none rounded-sm py-2 px-4 w-96" subtitle={subtitle} />
+    </PreviewContainer>
+  );
+}

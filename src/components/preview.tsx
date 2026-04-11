@@ -1,11 +1,12 @@
-import { Default, PinkBlue, StripesA, StripesB, TextOnly } from "./images";
+import { Checkerboard, Default, PinkBlue, StripesA, StripesB, TextOnly } from "./images";
 
 export const TEMPLATES = {
   Default: Default,
   TextOnly: TextOnly,
   StripesA: StripesA,
   StripesB: StripesB,
-  PinkBlue: PinkBlue
+  PinkBlue: PinkBlue,
+  Checkerboard: Checkerboard
 };
 
 type TemplateKey = keyof typeof TEMPLATES;

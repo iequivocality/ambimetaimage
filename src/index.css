@@ -108,6 +108,12 @@
     font-weight: 700;
     src: url(/fonts/GeistMono-Variable.ttf);
   }
+
+  @font-face {
+    font-family: IrishGrover;
+    font-weight: 700;
+    src: url(/fonts/IrishGrover.woff2) format('woff2');
+  }
 }
 
 .default-template {
@@ -176,4 +182,34 @@
     hsl(210deg 37% 60%) 72%,
     hsl(206deg 43% 57%) 100%
   );
+}
+
+.checkerboard-template .subtitle {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.25rem;
+}
+
+.checkerboard-template {
+  font-family: "IrishGrover", sans-serif;
+	/* The entire checkerboard in one line */
+	background:
+		conic-gradient(
+			#f89bbd 90deg,
+			#fdfcfc 90deg 180deg,
+			#f89bbd 180deg 270deg,
+			#fdfcfc 270deg
+		)
+		0 0 / 48px 48px;
+}
+
+.checkerboard-template::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: radial-gradient(
+		ellipse at center,
+		transparent 0%,
+		rgba(200, 90, 133, 0.15) 1%,
+		rgba(107, 26, 56, 0.82) 100%
+	);
 }

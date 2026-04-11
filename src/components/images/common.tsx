@@ -76,7 +76,7 @@ export function PreviewTitle({
   return (
     <div
       className={cn(
-        "text-7xl font-bold max-w-[700px] text-yellow text-center z-10 mt-4",
+        "title text-7xl font-bold max-w-[700px] text-yellow text-center z-10 mt-4",
         className,
       )}
     >
@@ -99,7 +99,7 @@ export function PreviewSubtitle({
   return (
     <div
       className={cn(
-        "text-foreground font-medium text-4xl max-w-[600px] z-10 text-center mt-10",
+        "subtitle text-foreground font-medium text-4xl max-w-[600px] z-10 text-center mt-10",
         className,
       )}
     >
