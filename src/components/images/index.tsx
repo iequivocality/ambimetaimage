@@ -118,10 +118,37 @@ export const PinkBlue = ({ title }: PreviewProps) => {
 export const Checkerboard = ({ title, subtitle }: PreviewProps) => {
   return (
     <PreviewContainer className="checkerboard-template flex justify-center">
-      
+      <img
+				src="/templates/rao-1.jpeg"
+				alt="Rao 1"
+				className="absolute top-[6%] left-[4%] rotate-[20deg] border-8 border-white outline-1 z-30"
+				width={250}
+				height={260.5}
+			/>
+			<img
+				src="/templates/rao-2.png"
+				alt="Rao 2"
+				className="absolute bottom-[6%] right-[4%] -rotate-[20deg] border-8 border-white outline-1 z-30"
+				width={250}
+				height={260.5}
+			/>
+			<img
+				src="/templates/rao-3.jpeg"
+				alt="Rao 3"
+				className="absolute bottom-[6%] left-[4%] rotate-[20deg] md:-rotate-20 border-8 border-white outline-1 z-30"
+				width={125}
+				height={130.25}
+			/>
+			<img
+				src="/templates/rao-4.jpeg"
+				alt="Rao 4"
+				className="absolute top-[6%] right-[4%] -rotate-[20deg] border-8 border-white outline-1 z-30"
+				width={250}
+				height={260.5}
+			/>
       <PreviewTitle
         title={title}
-        className="bg-white w-full h-84 rounded-lg flex justify-center items-center p-8 text-gray-800 mt-0"
+        className="bg-white w-full h-56 rounded-lg flex justify-center items-center p-8 text-gray-800 mt-0 relative z-40"
       />
       <img className="absolute w-32 h-32 object-cover top-[25%] -translate-y-1/2 rounded-full z-40 border-white border-4" src="/templates/raora.png"/>
       <PreviewSubtitle className="bg-[#675666] leading-none rounded-sm py-2 px-4 w-96" subtitle={subtitle} />
