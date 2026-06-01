@@ -6,6 +6,7 @@ export type PreviewProps = {
   title: string;
   subtitle: string;
   template: string;
+  imageUrl: string;
 };
 
 export function PreviewContainer({

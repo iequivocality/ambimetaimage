@@ -155,3 +155,21 @@ export const Checkerboard = ({ title, subtitle }: PreviewProps) => {
     </PreviewContainer>
   );
 }
+
+export const ImageWithText = ({ title, imageUrl }: PreviewProps) => {
+  return (
+    <PreviewContainer
+      className="flex justify-center"
+    >
+      {imageUrl.length > 0 && <img
+				src={imageUrl}
+				alt="Rao 4"
+				className="absolute top-0 left-0 w-full h-full object-cover scale-110"
+			/>}
+      <PreviewTitle
+        title={title}
+        className="w-full h-56 bg-gray-900/30 rounded-lg flex justify-center items-center p-8 text-white mt-0 relative z-40 hidden"
+      />
+    </PreviewContainer>
+  );
+};
